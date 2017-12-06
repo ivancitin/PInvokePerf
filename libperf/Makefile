@@ -1,11 +1,12 @@
 CC=gcc
-CFLAGS=-O2 `pkg-config --cflags glib-2.0` `pkg-config --cflags mono-2`
-LDFLAGS=`pkg-config --libs glib-2.0` `pkg-config --libs mono-2`
+CFLAGS=-O2 `pkg-config --cflags mono-2`
+LDFLAGS=`pkg-config --libs mono-2`
 
 all: libperf
 
 libperf: libperf.o
 	$(CC) $(LDFLAGS) -shared libperf.o -o libperf.so
+	mkdir -p ../PInvokePerf/bin/Release
 	cp libperf.so ../PInvokePerf/bin/Release
 
 libperf.o:
